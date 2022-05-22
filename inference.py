@@ -1,10 +1,16 @@
 import torch
 import cv2
 import torchvision.transforms as transforms
+import argparse
+
 from model import CNNModel
 
-#Path of image in test
-path='input/test_image.jpg'
+parser = argparse.ArgumentParser()      # Parse input arguments
+parser.add_argument('-i', '--input', 
+    default='input/test_image.jpg',      #Path of image in test
+    help='path to the input image')
+args = vars(parser.parse_args())
+
 
 # the computation device
 device = ('cuda' if torch.cuda.is_available() else 'cpu')
@@ -29,7 +35,7 @@ transform = transforms.Compose([
     )
 ])  
 
-image = cv2.imread(path)
+image = cv2.imread(args['input'])
 # convert to RGB format
 image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 image = transform(image)
