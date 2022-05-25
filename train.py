@@ -11,7 +11,7 @@ from datasets import train_loader, test_loader
 
 # Learning_parameters 
 lr = 1e-3
-epochs = 4
+epochs = 3
 
 # Save the trained model to disk in order to inference later.
 def save_model(epochs, model, optimizer, criterion):
